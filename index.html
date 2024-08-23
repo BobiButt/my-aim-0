@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <!-- <script src="topnavbar.js"></script> -->
+   
+</head>
+
+<body class="p-0 m-0 d-flex">
+    <header>
+        <nav class="navbar  position-fixed top-0 w-100 d-flex align-content-center justify-content-between p-1 " style="background-color: black;">
+            <div class="h3">MySite</div>
+            <ul class="list-unstyled  nav-l">
+                <li class="mr-4 font-size-5 position-relative pt-3"><a href="#home" class="text-white">Home</a></li>
+                <li class="mr-4 font-size-5 position-relative pt-3"><a href="#about" class="text-white">About</a></li>
+                <li class="mr-3 font-size-5 position-relative dropdown pt-3">
+                    <a href="#services" class="text-white dropdown-toggle pt-3" id="dropdownMenuButton" data-toggle="dropdown">Services</a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item"><a href="#service1" class="text-dark">Service 1</a></li>
+                        <li class="dropdown-item"><a href="#service2" class="text-dark">Service 2</a></li>
+                        <li class="dropdown-item"><a href="#service3" class="text-dark">Service 3</a></li>
+                    </ul>
+                </li>
+                <li class="position-relative pt-3"><a href="#contact" class="text-white">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+    <div id="sidebar" class="sidebar h-100 bg-dark text-white overflow-y-auto position-fixed top-0 start-0">
+        <h2 class="text-center py-3 m-0 w-100 ">LeafOS</h2>
+        <ul class="list-unstyled p-0 m-0 ">
+            <li class="p-4 text-center"><a class="text-white d-block text-decoration-none w-100 " href="#home">Home</a></li>
+            <li class="p-4 text-center"><a class="text-white d-block text-decoration-none w-100 " href="#services">Services</a></li>
+            <li class="p-4 text-center"><a class="text-white d-block text-decoration-none w-100 " href="#clients">Clients</a></li>
+            <li class="p-4 text-center"><a class="text-white d-block text-decoration-none w-100 " href="#contact">Contact</a></li>
+            <li class="p-4 text-center"><a class="text-white d-block text-decoration-none w-100 " href="#about">About</a></li>
+            <!-- Add more links as needed -->
+            <li class="dropdown-divider"></li>
+            <li class="p-4 text-center"><a class="text-white d-block text-decoration-none w-100 " href="#about">item next</a></li>
+
+
+            
+        </ul>
+    </div>
+    <div class="content mt-5 p-4 flex-grow-1 ms-0">
+        <button id="toggleBtn" class="btn border border-5 border-black my-3">☰ Toggle Sidebar</button>
+        
+        <h1>Main Content Area</h1>
+        <p>This is the main content area. Click the links in the sidebar to
+            navigate.</p>
+           
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-l');
+
+    burger.addEventListener('click', () => {
+        navLinks.classList.toggle('nav-active');
+
+        burger.classList.toggle('toggle');
+    });
+
+    // Close dropdowns on mobile when clicking outside
+    document.addEventListener('click', (event) => {
+        if (!navLinks.contains(event.target) && !burger.contains(event.target)) {
+            navLinks.classList.remove('nav-active');
+            burger.classList.remove('toggle');
+        }
+    });
+
+    // Toggle dropdowns on mobile
+    const dropdowns = document.querySelectorAll('.nav-links li');
+    dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('click', (event) => {
+            if (window.innerWidth <= 768) {
+                event.stopPropagation();
+                const subMenu = dropdown.querySelector('.dropdown');
+                if (subMenu) {
+                    subMenu.classList.toggle('nav-active');
+                }
+            }
+        });
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const sidebar = document.getElementById('sidebar');
+            const toggleBtn = document.getElementById('toggleBtn');
+            const body = document.body;
+          
+            toggleBtn.addEventListener('click', () => {
+                body.classList.toggle('sidebar-open');
+            });
+        });   
+    </script>
+
+</body>
+</html>
+

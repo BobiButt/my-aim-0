@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background: #333;
+    color: #fff;
+}
+
+
+
+.nav-l {
+    /* list-style: none; */
+    display: flex;
+    /* position: relative; Added for positioning dropdown */
+ 
+}
+
+/* Dropdown menu styles */
+
+/* Show dropdown on hover */
+.nav-links li:hover .dropdown {
+    display: block; /* Display dropdown on hover */
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+    padding: 14px 0px;
+}
+
+.burger div {
+    width: 30px;
+    height: 3px;
+    background: #fff;
+    margin: 5px;
+    transition: all 0.6s ease;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+    .nav-l {
+        display: none; /* Hide nav links by default on mobile */
+        flex-direction: column; /* Arrange links in a column */
+        width: 100%; /* Full width for nav */
+        position: absolute; /* Position nav links absolutely */
+        top: 50px; /* Position below the navbar */
+        left: 0;
+        background: #333; /* Background color for nav */
+    }
+
+    .nav-l.nav-active {
+        display: flex; /* Display nav links when active */
+    }
+
+    .nav-l li {
+        margin: 0; /* Remove margin for nav items */
+    }
+
+    .nav-l a {
+        padding: 20px; /* Padding for nav items */
+        display: block; /* Make nav items block elements */
+        text-align: center; /* Center align nav items */
+    }
+
+    .dropdown {
+        position: static; /* Static positioning for dropdown on mobile */
+    }
+
+    .burger {
+        display: block; /* Show burger menu on mobile */
+    }
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.burger.toggle .line1 {
+    transform: rotate(-45deg) translate(-6px, 6px);
+}
+
+.burger.toggle .line2 {
+    opacity: 0;
+}
+
+.burger.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
