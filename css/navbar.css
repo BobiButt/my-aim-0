@@ -21,7 +21,10 @@ header {
     /* position: relative; Added for positioning dropdown */
  
 }
-
+.drop{
+    margin:auto ;
+    margin-left: 30%;
+}
 /* Dropdown menu styles */
 
 /* Show dropdown on hover */
